@@ -7,5 +7,14 @@ def home(request):
 def products(request):
     return HttpResponse('products')
 
-def customer(request):
-    return HttpResponse('customer')
+def panic_button(request):
+    return render(request, 'app_relax/panic-button.html')
+
+def about(request):
+    return render(request, 'app_relax/about.html')
+
+def anxiety_tips(request):
+    return render(request, 'app_relax/anxiety-tips.html')
+
+def stats(request):
+    return render(request, 'app_relax/stats.html')

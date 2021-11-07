@@ -1,6 +1,5 @@
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,40 +8,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relax</title>
 
-    <link rel="stylesheet" type="text/css" href="{% static '/css/index-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/panic-button-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet"> 
-
 </head>
 <body>
     <header>
         <nav id="navegation-bar">
             <ul id="ul-nav">
                 <li><a class="a-nav" href="http://localhost:8000/home/" class="a-bar">Home</a></li>
-                <li><a class="a-nav" href="http://localhost:8000/about/" class="a-bar">Acerca</a></li>
+                <li><a class="a-nav" href="#" class="a-bar">Acerca</a></li>
                 <li><a class="a-nav" href="http://localhost:8000/anxiety-tips/" class="a-bar">Tips ansiedad</a></li>
                 <li><a class="a-nav" href="http://localhost:8000/stats/" class="a-bar">Estadisticas</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="button-upper">
-            <h1>Relax</h1>
-        </section>
-        <section id="button-section">
-            <section id="father-rounded-button">
-                <a id="rounded-button" href="http://localhost:8000/panic-button/"><p id="button-text">Boton</p></a>
-            </section>
-            <section id="text-button-button">
-                <p>Presiona el boton para comenzar</p>
-            </section>
+        <section id="section-button">
+            <ul id="ul-buttons">
+                <div class="div-button">
+                    <li><a class="a-ul" href="https://www.google.cl">Juegos</a></li>
+                </div>
+                <div class="div-button">
+                    <li><a class="a-ul" href="https://www.google.cl">¿Quieres hablar?</a></li>
+                </div>
+                <div class="div-button">
+                    <li><a class="a-ul" href="https://www.google.cl">¿Tips?</a></li>
+                </div>
+            </ul>
         </section>
     </main>
-    <footer>
-        <section id="contact">
-            <p>Si quieres contactanos pincha <a href="https://google.cl">aquí</a></p>
-        </section>
-    </footer>
 </body>
 </html>
