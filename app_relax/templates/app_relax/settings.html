@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relax</title>
+
+    <link rel="stylesheet" href="{% static '/css/settings-style.css' %}">
 </head>
 <body>
-    <p1>Products</p1>
+    <main>
+        <img src="{% static '/images/settings-logo.png' %}" alt="">
+    </main>
 </body>
 </html>

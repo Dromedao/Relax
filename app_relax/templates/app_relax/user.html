@@ -1,4 +1,4 @@
-{% load static %}
+{% load static%}
 
 <!DOCTYPE html>
 <html lang="es">
@@ -8,21 +8,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relax</title>
 
-    <link rel="stylesheet" type="text/css" href="{% static '/css/about-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/user-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <header>
-        <nav id="navegation-bar">
+        <!-- <nav id="navegation-bar">
             <ul id="ul-nav">
                 <li><a class="a-nav" href="http://localhost:8000/home/" class="a-bar">Home</a></li>
                 <li><a class="a-nav" href="http://localhost:8000/about/" class="a-bar">Acerca</a></li>
                 <li><a class="a-nav" href="http://localhost:8000/anxiety-tips/" class="a-bar">Tips ansiedad</a></li>
                 <li><a class="a-nav" href="http://localhost:8000/stats/" class="a-bar">Estadisticas</a></li>
             </ul>
-        </nav>
+        </nav> -->
     </header>
+
+    <main>
+        <img src="{% static '/images/user-logo.png' %}" alt="">
+        <section id="button-section">
+            <ul>
+                <li><a href="">User statistics</a></li>
+                <li><a href="">Emergency contacs</a></li>
+                <li><a href="">How do you feel today?</a></li>
+            </ul>
+        </section>
+    </main>
+
 </body>
 </html>

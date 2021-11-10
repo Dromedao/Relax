@@ -1,0 +1,13 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'DM Sans', sans-serif;
+    background-color: #ffffff;
+}
+
+img{
+    width: 20%;
+    display: block;
+    margin: 15px auto 0px auto;
+}
