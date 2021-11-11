@@ -1,2 +1,2 @@
 # Relax
-Aplicación web que tiene como objetivo el ayudar a las personas durante un ataque de ansiedad. 
+Relax es una aplicación web que tiene como objetivo el ayudar a las personas durante un ataque de ansiedad mediante diversos usos como lo es escuchar música relajante, o escribir lo que está sintiendo o sintió ese día, o responder preguntas que las distraiga y a la vez probar tu conocimiento. Además puedes notificar a alguien sobre lo que esta pasando en ese momento, sin mencionar que cuenta con un apartado, el cual te ayudará a ver y saber que otros tips son aplicables para esos momentos o para prevenirlos.
