@@ -2,120 +2,110 @@ body, html{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    overflow-y: hidden;
     font-family: 'DM Sans', sans-serif;
-    background-color: #7189FF;
-}
-
-#ul-nav{
-    font-size: 18px;
-    list-style: none;
-    margin: 0;
-    padding: 20px;
-    background-color: #4967ff;
-    display: flex;
-}
-
-.a-nav{
-    text-decoration: none;
-    color: white;
-    float: left;
-    text-decoration: none;
-    /* padding-right: 1rem;
-    padding-left: 1rem; */
-    padding: 10px;
-    border-radius: 3rem;
-}
-
-.a-nav:hover{
-    background-color: #555;
+    height: 100%;
 }
 
 #button-section{
-    background-color: #7189FF;
+    background-color: #ffffff;
 }
 
 #button-upper{
-    padding: 1rem;
     text-align: center;
-    vertical-align: middle;
-    background-color: #7189FF;
+    background-color: #ffffff;
 }
 
 h1{
-    font-size: 100px;
-    color: white;
-}
-
-ul{
-    font-size: 18px;
-    list-style: none;
+    font-size: 70px;
+    padding: 100px 0px 20px 0px;
     margin: 0;
-    padding: 20px;
-    background-color: #4967ff;
-    display: flex;
+    line-height: 0;
+    color: black;
 }
 
-
-li{
-    text-decoration: none; 
-}
-
-.a-bar{
-    color: white;
-    float: left;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 3rem;
+p{
+    color: #bfbfbf;
+    padding-bottom: 50px;
 }
 
 #father-rounded-button{ 
     padding: 1px 0px 10px 0px;
-    background-color: #7189FF;
+    z-index:-1;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
+    transform: translateY(50%);
 }
 
 #rounded-button {
-    width: 350px;
-    height: 350px;
-    background: #9197C7;
+    width: 40vw;
+    height: 40vw;
+    display: block;
+    background: #ffffff;
+    z-index:1;
     color:azure;
     cursor: pointer;
     border-radius: 50%;
     text-align: center;
     text-decoration: none;
+    transform: translateY(-50%);
 }
 
-
-#button-text{
-    font-size: 30px;
-    line-height: 285px;
+#rounded-button:hover{
+    background-color: #bfbfbf;
 }
 
-
-#rounded-button:hover {
-    background: #555;
-}
-
-
-#stats-button:hover{
-    background-color: #555;
-}
-
-#text-button-button{
-    font-size: 20px;
+#border-button{
+    z-index:0;
+    width: 48vw;
+    height: 48vw;
+    position: absolute;
+    background: #000;
+    color:azure;
+    cursor: pointer;
+    border-radius: 50%;
     text-align: center;
-    color: white;
-    background-color: #7189FF;
-    padding-bottom: 3rem;
+    text-decoration: none;
+    display: flex;
+    background-image: linear-gradient(aquamarine, #87cefa, #E6E6FA);
+    margin-bottom: 100px;
+    transform: translateY(-50%);
 }
 
-#contact{
-    color: white;
-    padding: 3.5rem;
-    background-color: #3D348B;
+.image{
+    transform: translateX(48%);
 }
 
-#contact a{
-    color: white;
+@media (min-width: 700px){
+    #rounded-button {
+        width: 300px;
+        height: 300px;
+        display: block;
+        background: #ffffff;
+        z-index:1;
+        color:azure;
+        cursor: pointer;
+        border-radius: 50%;
+        text-align: center;
+        text-decoration: none;
+        transform: translateY(-50%);
+    }
+    
+    #border-button{
+        z-index:0;
+        width: 350px;
+        height: 350px;
+        position: absolute;
+        background: #000;
+        color:azure;
+        cursor: pointer;
+        border-radius: 50%;
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        background-image: linear-gradient(aquamarine, #87cefa, #E6E6FA);
+        margin-bottom: 100px;
+        transform: translateY(-50%);
+    }
 }

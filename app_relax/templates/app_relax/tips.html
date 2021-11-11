@@ -1,4 +1,4 @@
-{% load static%}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="es">
@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relax</title>
 
-    <link rel="stylesheet" type="text/css" href="{% static '/css/about-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/tips-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <header>
+    <!-- <header>
         <nav id="navegation-bar">
             <ul id="ul-nav">
                 <li><a class="a-nav" href="http://localhost:8000/home/" class="a-bar">Home</a></li>
@@ -23,6 +23,15 @@
                 <li><a class="a-nav" href="http://localhost:8000/stats/" class="a-bar">Estadisticas</a></li>
             </ul>
         </nav>
-    </header>
+    </header> -->
+    <div>
+        <p>Did you know...</p>
+    </div>
+
+    <img src="{% static 'images/not-recommended.png' %}" alt="">
+    
+    <div>
+        <p>Relaxing techniques</p>
+    </div>
 </body>
 </html>

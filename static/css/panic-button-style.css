@@ -3,7 +3,12 @@ body, html{
     padding: 0;
     overflow-x: hidden;
     font-family: 'DM Sans', sans-serif;
-    background-color: #7189FF;
+    background-color: #ffffff;
+}
+
+#section-button{
+    text-align: center;
+    list-style: none;
 }
 
 #ul-buttons{
@@ -13,15 +18,14 @@ body, html{
 }
 
 .a-ul{
-    color: white;
     text-decoration: none;
     padding: 5px;
-    /* background: #bfbfbf; */
-    border-radius: 10px;
-    margin: 10px;
-    border: 10px;
+    /* margin: 10px;
+    border: 10px; */
 }
 
+
+/*
 .a-ul:hover{
     background-color: #555
 }
@@ -40,8 +44,6 @@ body, html{
     color: white;
     float: left;
     text-decoration: none;
-    /* padding-right: 1rem;
-    padding-left: 1rem; */
     padding: 10px;
     border-radius: 3rem;
 }
@@ -60,4 +62,4 @@ body, html{
     width: 50%;
     background-color: #4967ff;
     border-radius: 10px;
-}
+} */
