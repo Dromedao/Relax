@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relax</title>
+
+    <link rel="stylesheet" href="{% static '/css/notes-style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        {% for nota in notes %}
+        {% ifequal request.user nota.user %}
+        <article>
+            <div class="cabecera">
+                <h2>@{{ nota.user }}</h2>
+                <p id="algo">{{ nota.timestamp}}</p>
+            </div>
+            {{ nota.content }}
+        </article>
+        {% endifequal %}
+        {% endfor %}
+    </div>
+    <footer>
+        <a href="http://localhost:8000/newnotes/">Crear una nueva nota</a>
+    </footer>
+</body>
+
+</html>

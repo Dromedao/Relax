@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relax</title>
+
+    <link rel="stylesheet" href="{% static '/css/interview-style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet"> 
+</head>
+
+<form action="" method="post" id="formulario">
+    
+    {% csrf_token %}
+
+    <div class="container">
+        <p id="titulo"><b>Formulario</b></p>
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+        {{ mensaje.as_p }}
+    </div>
+
+
+    <!-- <form action="." method="POST">
+        {% csrf_token %}
+        <input type="text" name="situacion" placeholder="Ingrese su situación">
+        <button type="submit">Enviar</button>
+    </form> -->
+</form>
+</html>

@@ -1,0 +1,14 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.container{
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 5px;
+    background-color: aquamarine;
+}
