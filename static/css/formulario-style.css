@@ -1,0 +1,13 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+    background-color: #ffffff;
+}
+
+div{
+    width: 40%;
+    margin: 0 auto;
+    background-color: aquamarine;
+    border-radius: 5px;
+}

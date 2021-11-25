@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static '/css/formulario-style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <form action="" method="POST">
+        <div class="container">
+            <form action="" method="POST">
+                <h2>Describe por qué detonaste el botón de pánico</h2>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="input">Enviar</button>
+            </form>
+        </div>
+    </form>
+</body>
+</html>
