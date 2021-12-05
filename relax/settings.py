@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app_relax.apps.AppRelaxConfig',
-    'ckeditor',
     'tinymce',
 ]
 
@@ -130,13 +129,13 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-CKEDITOR_UPLOAD_PATH = "uploads/"
+# CKEDITOR_UPLOAD_PATH = "uploads/"
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': None,
-    },
-}
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': None,
+#     },
+# }
 
 # from decouple import config
 
