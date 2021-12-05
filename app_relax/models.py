@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 from requests.api import get
 from .services import get_dog
 import datetime
+from tinymce import models as tinymce_models
+
+#from ckeditor.fields import RichTextField
 # from ckeditor.fields import RichTextField
 
 #from .services import get_dog
@@ -59,8 +62,8 @@ class Nota(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Notas')
     timestamp = models.DateTimeField(default=timezone.now)
     # content = models.CharField(default="", max_length=1000)
-    content = models.TextField()
-    # content = RichTextField(verbose_name="Contenido")
+    #content = models.TextField()
+    content = tinymce_models.HTMLField()
 
     class Meta:
         ordering = ['-timestamp']

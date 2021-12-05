@@ -9,6 +9,10 @@ body, html{
     display: flex;
 } */
 
+/* body{
+    display: flex;
+} */
+
 article{
     width: 30%;
     margin: 0 auto;

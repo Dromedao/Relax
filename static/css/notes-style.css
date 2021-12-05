@@ -6,11 +6,15 @@ body, html{
 }
 
 article{
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
-    background-color: #bfbfbf;
-    border-radius: 5px;
+    width: 95%;
+    margin: 1% auto;
+
+    /* text-align: center; */
+    /* background-color: #fffff4; */
+    
+    border-style: solid;
+    border-color: lightskyblue;
+    /* border-radius: 5px; */
 }
 
 h2{
@@ -23,8 +27,16 @@ h2{
 }
 
 .cabecera{
-    background-color: gray;
-    border-radius: 5px;
+    background-color: lightskyblue;
+    /* border-radius: 5px; */
+}
+
+.cabecera p{
+    margin: 1%;
+}
+
+.texto{
+    margin-left: 1%;
 }
 
 footer{

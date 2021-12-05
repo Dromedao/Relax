@@ -1,5 +1,6 @@
 from re import template
 from django.urls import path
+from django.urls.conf import include
 from . import views
 from django.contrib.auth.views import LoginView, LogoutView
 
@@ -21,4 +22,5 @@ urlpatterns = [
     path("player/", views.mp3player),
     path("statistics/", views.Estadisticas),
     path("howdoyoufeel/", views.HowDoYouFeelView),
+    path('tinymce/', include('tinymce.urls')),
 ]

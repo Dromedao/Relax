@@ -1,7 +1,5 @@
 {% load static %}
 
-{% load crispy_forms_tags %}
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,16 +25,11 @@
 
     <form action="" method="POST">
         <br>
-
-        
         <img id="imagen-perro" src="{{ message }}" alt="perro" width="400px" height="650px">
         <input type="hidden" name="imagen" value="{{ message }}">
         <br>
-        <!-- col-md-8 -->
-        <div class="mb-3 justify-content-center"> 
-            {% csrf_token %}
-            {{ form }}
-          </div>
+        {% csrf_token %}
+        {{ form }}
         <button type="submit">Guardar perro</button>
     </form>
 </body>

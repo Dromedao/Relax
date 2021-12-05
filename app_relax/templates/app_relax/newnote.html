@@ -20,7 +20,8 @@
     </section>
     <form action="" method="POST">
         {% csrf_token %}
-        {{ form }}
+        {{ form.media}}
+        {{ form|safe }}
         <button type="submit">Subir</button>
     </form>
     

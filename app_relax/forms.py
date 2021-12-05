@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.forms.fields import EmailField
 import requests
 from .models import HowDoYouFeel, Nota, Formulario, Dog, Profile
+from tinymce.widgets import TinyMCE
 #from .views import get_dog
 #from .models import entrevista
 
@@ -27,6 +28,7 @@ class UserRegisterForm(UserCreationForm):
 class NoteForm(forms.ModelForm):
     # content = forms.CharField(label="", widget=forms.TextInput(attrs={'rows':2, 'placeholder':'¿Qué te gustaría anotar?', "class" : "ingreso-texto"}), required=True)
     content = forms.CharField(label="", widget=forms.Textarea(attrs={'rows':2, 'placeholder':'¿Qué te gustaría anotar?', "class" : "ingreso-texto"}), required=True)
+    content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
     class Meta:
         model = Nota
         fields = ['content']

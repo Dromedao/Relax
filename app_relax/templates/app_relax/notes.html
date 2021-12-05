@@ -19,10 +19,14 @@
         {% ifequal request.user nota.user %}
         <article>
             <div class="cabecera">
-                <h2>@{{ nota.user }}</h2>
+                <!-- <h2>@{{ nota.user }}</h2> -->
+                <br>
                 <p id="algo">{{ nota.timestamp}}</p>
             </div>
-            {{ nota.content }}
+            <div class="texto">
+                {{ nota.content|safe }}
+            </div>
+            <br>
         </article>
         {% endifequal %}
         {% endfor %}
