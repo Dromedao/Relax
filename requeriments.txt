@@ -2,3 +2,4 @@ django == 3.0.0
 django-crispy-forms
 Pillow
 requests
+django-ckeditor

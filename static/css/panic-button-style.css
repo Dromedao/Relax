@@ -2,6 +2,7 @@ body, html{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    overflow-y: hidden;
     font-family: 'DM Sans', sans-serif;
     background-color: #ffffff;
 }
@@ -19,11 +20,26 @@ body, html{
 
 .a-ul{
     text-decoration: none;
-    padding: 5px;
+    /* padding: 5px; */
+    color: darkslateblue;
     /* margin: 10px;
     border: 10px; */
+    margin-left: 3%;
 }
 
+div li img{
+    width: 30%;
+}
+
+div li{
+    display: flex;
+    align-items: center;
+}
+
+div{
+    width: 30%;
+    margin: 40px auto;
+}
 
 /*
 .a-ul:hover{

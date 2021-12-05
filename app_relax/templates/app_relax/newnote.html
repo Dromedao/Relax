@@ -14,10 +14,13 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <section>
+        <img src="{% static 'images/note-icon.png' %}" alt="">
+        <h2>Write down your feelings</h2>
+    </section>
     <form action="" method="POST">
-        <h2>Escribe una nota</h2>
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form }}
         <button type="submit">Subir</button>
     </form>
     

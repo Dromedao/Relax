@@ -16,5 +16,9 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(template_name="app_relax/logout.html"), name="logout"),
     path("newnotes/", views.nota, name="nota"),
     path("dogs/", views.hello_user),
-    path("formulario/", views.FormularioView)
+    path("formulario/", views.FormularioView),
+    path("owndogs/", views.MostrarPerros),
+    path("player/", views.mp3player),
+    path("statistics/", views.Estadisticas),
+    path("howdoyoufeel/", views.HowDoYouFeelView),
 ]

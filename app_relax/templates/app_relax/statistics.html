@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relax</title>
+
+    <script src="{% static '/lib/highcharts/highcharts.js' %}"></script>
+    <script src="{% static '/lib/highcharts/modules/wordcloud.js' %}"></script>
+    <script src="{% static '/lib/highcharts/modules/exporting.js' %}"></script>
+    <script src="{% static '/lib/highcharts/modules/export-data.js' %}"></script>
+    <script src="{% static '/lib/highcharts/modules/accessibility.js' %}"></script>
+</head>
+<body>
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <!-- <p class="highcharts-description">
+            This pie chart shows how the chart legend can be used to provide
+            information about the individual slices.
+        </p> -->
+        <!-- {% for elemento in data %}
+        {% ifequal request.user elemento.user%}
+        <h1>{{ elemento.dias_buenos }}</h1>
+        {% endifequal %}
+        {% endfor %} -->
+    </figure>
+    <br>
+    <br>
+    <figure class="highcharts-figure">
+        <div id="container-2"></div>
+        <!-- <p class="highcharts-description">
+            Word clouds are used to visualize how often each word in a
+            text occurs. This example uses an excerpt from the popular
+            "Lorem Ipsum" text. Words that appear often will appear
+            larger.
+        </p> -->
+    </figure>
+
+    {% for elemento in data %}
+        {% ifequal request.user elemento.user%}
+        <!-- <h1>{{ elemento.dias_buenos }}</h1> -->
+        <!-- {{ elemento.porcentaje_buenos }}
+        {{ elemento.porcentaje_normales }} -->
+    <script>
+        Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Estadistica de tus días'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'Buenos',
+            y: parseFloat('{{ elemento.porcentaje_buenos }}'),
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Decentes',
+            y: parseFloat('{{ elemento.porcentaje_decentes }}')
+        }, {
+            name: 'Normales',
+            y: parseFloat('{{ elemento.porcentaje_normales }}')
+        }, {
+            name: 'Malos',
+            y: parseFloat('{{ elemento.porcentaje_malos }}')
+        }, {
+            name: 'Terribles',
+            y: parseFloat('{{ elemento.porcentaje_terribles }}')
+        }, 
+        // {
+        //     name: 'Other',
+        //     y: 7.05
+        // }
+    ]
+    }]
+});
+    </script>
+
+    <script>
+        const text = '{{ elemento.algo }}',
+    lines = text.split(/[,\. ]+/g),
+    data = lines.reduce((arr, word) => {
+        let obj = Highcharts.find(arr, obj => obj.name === word);
+        if (obj) {
+            obj.weight += 1;
+        } else {
+            obj = {
+                name: word,
+                weight: 1
+            };
+            arr.push(obj);
+        }
+        return arr;
+    }, []);
+
+Highcharts.chart('container-2', {
+    accessibility: {
+        screenReaderSection: {
+            beforeChartFormat: '<h5>{chartTitle}</h5>' +
+                '<div>{chartSubtitle}</div>' +
+                '<div>{chartLongdesc}</div>' +
+                '<div>{viewTableButton}</div>'
+        }
+    },
+    series: [{
+        type: 'wordcloud',
+        data,
+        name: 'Occurrences'
+    }],
+    title: {
+        text: 'Most common words'
+    }
+});
+    </script>
+    {% endifequal %}
+    {% endfor %}
+</body>
+</html>

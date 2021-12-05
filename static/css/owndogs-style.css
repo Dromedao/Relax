@@ -1,0 +1,50 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+    background-color: #ffffff;
+}
+
+/* body{
+    display: flex;
+} */
+
+article{
+    width: 30%;
+    margin: 0 auto;
+    /* text-align: center; */
+    background-color: #ffffbf;
+    padding-top: 1.5%;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    /* color: darkslateblue; */
+}
+
+.nombre{
+    text-align: center;
+}
+
+article p{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+article img{
+    display: block;
+    margin: 0 auto;
+}
+
+
+.fecha{
+    margin-top: 1.5%;
+    margin-left: 1.5%;
+}
+
+#scotch{
+    display: block;
+    margin: auto;
+    width: 10%;
+    transform: translateY(18px);
+}

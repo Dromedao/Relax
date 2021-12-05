@@ -8,7 +8,36 @@ body, html{
 form{
     width: 30%;
     margin: 0 auto;
-    background-color: #bfbfbf;
+    /* background-color: #bfbfbf; */
     border-radius: 5px;
     
+}
+
+section{
+    display: flex;
+    width: 30%;
+    margin: 0 auto;
+}
+
+section img{
+    width: 30%;
+}
+
+section h2{
+    display: block;
+    margin: auto;
+    color: darkslateblue;
+}
+
+.your-class{
+    display: none;
+}
+
+/* .ingresp-texto input{
+    width: 400px;
+} */
+
+textarea {
+    width: 600px;
+    height: 400px;
 }
