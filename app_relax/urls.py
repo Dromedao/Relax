@@ -23,4 +23,5 @@ urlpatterns = [
     path("statistics/", views.Estadisticas),
     path("howdoyoufeel/", views.HowDoYouFeelView),
     path('tinymce/', include('tinymce.urls')),
+    path("paint/", views.paint)
 ]

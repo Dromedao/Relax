@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+}
+
+.top-bar {
+    display: flex;
+    flex-direction: row;
+    background-image: linear-gradient(aquamarine, #87cefa, #E6E6FA);
+    border-bottom: 2px solid black;
+    position: absolute;
+    width: 100%;
+}
+
+.top-bar * {
+    margin: 10px 10px;
+}
+
+#draw {
+    display: block;
+}

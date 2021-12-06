@@ -49,6 +49,9 @@ def register(request):
     context = {'form' : form }
     return render(request, 'app_relax/register.html', context)  
 
+def paint(request):
+    return render(request, "app_relax/paint.html")
+
 # def entrevista(request):
 #     return render(request, )
 
