@@ -23,5 +23,9 @@ urlpatterns = [
     path("statistics/", views.Estadisticas),
     path("howdoyoufeel/", views.HowDoYouFeelView),
     path('tinymce/', include('tinymce.urls')),
-    path("paint/", views.paint)
+    path("paint/", views.paint),
+    path("statisticRegister/", views.statisticsRegister),
+    path("playAndRelax/", views.playAndRelax),
+    path("contacts/", views.definirContactor),
+    path("send/", views.enviarCorreos),
 ]

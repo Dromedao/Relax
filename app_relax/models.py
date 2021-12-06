@@ -45,6 +45,9 @@ class Profile(models.Model):
     total = models.IntegerField(default=0)
     escribe_una_palabra = models.CharField(max_length=1000, default="Write a word", blank=True, null=True)
     algo = models.CharField(max_length=1000, default="", blank=True, null=True)
+    contactos = models.CharField(max_length=10000, default="", blank=True, null=True)
+
+    total_boton = models.IntegerField(default=0)
 
     lista_dias= [
         [0, "Bueno"],

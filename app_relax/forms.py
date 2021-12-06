@@ -15,6 +15,11 @@ class DogsForm(forms.ModelForm):
         model = Dog
         fields = ['nombre']
 
+class Contactos(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['contactos']
+
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
     password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)

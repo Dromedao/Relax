@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relax</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static '/css/definir-contactos-style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <form action="" method="POST">
+        <h1>Ingresa el correo de tu contacto</h1>
+        {% csrf_token %}
+        <!-- {{ form }} -->
+        <input type="text" name="contacto">
+        <button type="submit">Guardar</button>
+    </form>
+    <section>
+        <h3>Contactos del usuario:</h3>
+        {% for elemento in algo %}
+        {{ elemento }}
+        <br>
+        {% endfor %}
+    </section>
+</body>
+</html>

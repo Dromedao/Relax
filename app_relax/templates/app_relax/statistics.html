@@ -101,11 +101,11 @@
     }]
 });
     </script>
-
     <script>
+    if ('{{ elemento.algo }}' != "None"){    
         const text = '{{ elemento.algo }}',
-    lines = text.split(/[,\. ]+/g),
-    data = lines.reduce((arr, word) => {
+        lines = text.split(/[,\. ]+/g),
+        data = lines.reduce((arr, word) => {
         let obj = Highcharts.find(arr, obj => obj.name === word);
         if (obj) {
             obj.weight += 1;
@@ -117,26 +117,26 @@
             arr.push(obj);
         }
         return arr;
-    }, []);
+        }, []);
 
-Highcharts.chart('container-2', {
-    accessibility: {
-        screenReaderSection: {
-            beforeChartFormat: '<h5>{chartTitle}</h5>' +
-                '<div>{chartSubtitle}</div>' +
-                '<div>{chartLongdesc}</div>' +
-                '<div>{viewTableButton}</div>'
-        }
+    Highcharts.chart('container-2', {
+        accessibility: {
+            screenReaderSection: {
+                beforeChartFormat: '<h5>{chartTitle}</h5>' +
+                    '<div>{chartSubtitle}</div>' +
+                    '<div>{chartLongdesc}</div>' +
+                    '<div>{viewTableButton}</div>'
+            }   
     },
     series: [{
         type: 'wordcloud',
         data,
         name: 'Occurrences'
-    }],
+        }],
     title: {
         text: 'Most common words'
     }
-});
+    });}
     </script>
     {% endifequal %}
     {% endfor %}

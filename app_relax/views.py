@@ -1,17 +1,28 @@
 from ast import NodeTransformer
-from django import forms
+from django import forms, template
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import UpdateView
 from django.contrib import messages
-from .forms import DogsForm, HowDoYouFeelForm, UserRegisterForm, NoteForm, SentimientoForm
+from .forms import Contactos, DogsForm, HowDoYouFeelForm, UserRegisterForm, NoteForm, SentimientoForm
+from django.contrib.auth import login, authenticate
 import datetime
 import requests
+from django.template.loader import get_template
+from django.core.mail import EmailMultiAlternatives
+#from django.conf import settings
+from django.conf import settings as conf_settings
 
 def home(request):
     return render(request, 'app_relax/index.html')
+
+def statisticsRegister(request):
+    return render(request, 'app_relax/statistic-register.html')
+
+def playAndRelax(request):
+    return render(request, "app_relax/play-and-relax.html")
 
 def settings(request):
     return render(request, 'app_relax/settings.html')
@@ -36,14 +47,70 @@ def notes(request):
     context = {'notes': notas}
     return render(request, 'app_relax/notes.html', context)
 
+def send_email(request):
+    #context = {'mail': mail}
+
+    template = get_template('app_relax/mail.html')
+    content = template.render()
+    
+    producto = get_object_or_404(Profile, user = request.user)
+    form = Contactos(request.POST, instance=producto, files=request.FILES)
+
+    #print(form.save(commit=False).contactos, "aaaaaaaaaaaaaaaa")
+    mail = form.save(commit=False).contactos[:len(form.save(commit=False).contactos)-1]
+    
+    mail = mail.split("&")
+
+    email = EmailMultiAlternatives(
+        'Titulo',
+        'Descripcion',
+        'diezdediezteam@gmail.com',
+        mail,
+    )
+    email.attach_alternative(content, 'text/html')
+    email.send()
+
+def definirContactor(request):
+    producto = get_object_or_404(Profile, user = request.user)
+    #contactos_existentes = Contactos(request.POST, instance=producto, files=request.FILES).contactos
+    if request.method == 'POST':
+        form = Contactos(request.POST, instance=producto, files=request.FILES)
+        if form.is_valid():
+            #form.save(commit=False).user = current_user
+            if form.save(commit=False).contactos != None:
+                form.save(commit=False).contactos = form.save(commit=False).contactos + request.POST.get("contacto") + "&"
+            else:
+                form.save(commit=False).contactos = request.POST.get("contacto") + "&"
+            form.save()
+    form = Contactos()
+
+    for elemento in Profile.objects.all():
+        if elemento.user == request.user:
+            contactos = elemento.contactos[:len(elemento.contactos)-1].split("&")
+
+    data = {
+        'form': form,
+        'algo': contactos
+    }
+
+    return render(request, 'app_relax/definir-contactos.html', data)
+
+def enviarCorreos(request):
+    if request.method == 'POST':
+        send_email(request)
+    return render(request, 'app_relax/enviar-correo.html')
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
+            user = form.save()
             form.save()
+            login(request, user)
             username = form.cleaned_data['username']
             messages.success(request, f'Usuario {username} creado')
-            return redirect("http://localhost:8000/home/")
+
+            return redirect("/home/")
     else:
         form = UserRegisterForm()
     context = {'form' : form }
@@ -213,7 +280,7 @@ def HowDoYouFeelView(request):
                 #formulario.save(commit=False).algo = formulario.save(commit=False).algo.replace("$","")
                 formulario.save(commit=False).Como_estuvo_tu_dia = None
                 
-                if formulario.save(commit=False).algo is None:
+                if formulario.save(commit=False).algo is None and formulario.save(commit=False).escribe_una_palabra != None:
                     formulario.save(commit=False).algo = formulario.save(commit=False).escribe_una_palabra + " "
                     formulario.save(commit=False).escribe_una_palabra = ""
                 elif formulario.save(commit=False).escribe_una_palabra is None:
