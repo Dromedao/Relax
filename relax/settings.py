@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 
 LOGIN_REDIRECT_URL = "/home/"
 
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
+
 
 # Application definition
 
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app_relax.apps.AppRelaxConfig',
     'tinymce',
+    'embed_video',
 ]
 
 # CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -48,7 +48,7 @@ class NoteForm(forms.ModelForm):
 
 class SentimientoForm(forms.ModelForm):
     class Meta:
-        model = Formulario
+        model = Profile
         fields = ["situacion", "detonante", "sentimiento", "intensidad"]
 
 class HowDoYouFeelForm(forms.ModelForm):
