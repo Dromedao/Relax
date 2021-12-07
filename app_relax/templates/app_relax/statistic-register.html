@@ -25,7 +25,9 @@
             feature in Highcharts to easily switch between datasets.
         </p> -->
     </figure>
-
+    
+    {% for elemento in data %}
+        {% ifequal request.user elemento.user%}
     <script>
         Highcharts.chart('container', {
     chart: {
@@ -71,42 +73,42 @@
 
     series: [
         {
-            name: "Browsers",
+            name: "Sentimientos",
             colorByPoint: true,
             data: [
                 {
                     name: "Tristeza",
-                    y: 62.74,
+                    y: parseFloat('{{ elemento.porcentaje_tristeza }}'),
                     drilldown: "Chrome"
                 },
                 {
                     name: "Rabia",
-                    y: 10.57,
+                    y: parseFloat('{{ elemento.porcentaje_rabia }}'),
                     drilldown: "Firefox"
                 },
                 {
                     name: "Angustia",
-                    y: 7.23,
+                    y: parseFloat('{{ elemento.porcentaje_angustia }}'),
                     drilldown: "Internet Explorer"
                 },
                 {
                     name: "Ansia",
-                    y: 5.58,
+                    y: parseFloat('{{ elemento.porcentaje_ansia }}'),
                     drilldown: "Safari"
                 },
                 {
                     name: "Miedo",
-                    y: 4.02,
+                    y: parseFloat('{{ elemento.porcentaje_miedo }}'),
                     drilldown: "Edge"
                 },
                 {
                     name: "Frustación",
-                    y: 1.92,
+                    y: parseFloat('{{ elemento.porcentaje_frustracion }}'),
                     drilldown: "Opera"
                 },
                 {
                     name: "Verguenza",
-                    y: 7.62,
+                    y: parseFloat('{{ elemento.porcentaje_verguenza }}'),
                     drilldown: null
                 }
             ]
@@ -115,224 +117,164 @@
     drilldown: {
         series: [
             {
-                name: "Chrome",
+                name: "Tristeza",
                 id: "Chrome",
                 data: [
                     [
-                        "v65.0",
-                        0.1
+                        "Mañana",
+                        parseFloat('{{ elemento.manana_tristeza }}')
                     ],
                     [
-                        "v64.0",
-                        1.3
+                        "Medio día",
+                        parseFloat('{{ elemento.medioDia_tristeza }}')
                     ],
                     [
-                        "v63.0",
-                        53.02
+                        "Tarde",
+                        parseFloat('{{ elemento.tarde_tristeza }}')
                     ],
                     [
-                        "v62.0",
-                        1.4
+                        "Noche",
+                        parseFloat('{{ elemento.noche_tristeza }}')
                     ],
-                    [
-                        "v61.0",
-                        0.88
-                    ],
-                    [
-                        "v60.0",
-                        0.56
-                    ],
-                    [
-                        "v59.0",
-                        0.45
-                    ],
-                    [
-                        "v58.0",
-                        0.49
-                    ],
-                    [
-                        "v57.0",
-                        0.32
-                    ],
-                    [
-                        "v56.0",
-                        0.29
-                    ],
-                    [
-                        "v55.0",
-                        0.79
-                    ],
-                    [
-                        "v54.0",
-                        0.18
-                    ],
-                    [
-                        "v51.0",
-                        0.13
-                    ],
-                    [
-                        "v49.0",
-                        2.16
-                    ],
-                    [
-                        "v48.0",
-                        0.13
-                    ],
-                    [
-                        "v47.0",
-                        0.11
-                    ],
-                    [
-                        "v43.0",
-                        0.17
-                    ],
-                    [
-                        "v29.0",
-                        0.26
-                    ]
                 ]
             },
             {
-                name: "Firefox",
+                name: "Rabia",
                 id: "Firefox",
                 data: [
                     [
-                        "v58.0",
-                        1.02
+                        "Mañana",
+                        parseFloat('{{ elemento.manana_rabia }}')
                     ],
                     [
-                        "v57.0",
-                        7.36
+                        "Medio día",
+                        parseFloat('{{ elemento.medioDia_rabia }}')
                     ],
                     [
-                        "v56.0",
-                        0.35
+                        "Tarde",
+                        parseFloat('{{ elemento.tarde_rabia }}')
                     ],
                     [
-                        "v55.0",
-                        0.11
+                        "Noche",
+                        parseFloat('{{ elemento.noche_rabia }}')
                     ],
-                    [
-                        "v54.0",
-                        0.1
-                    ],
-                    [
-                        "v52.0",
-                        0.95
-                    ],
-                    [
-                        "v51.0",
-                        0.15
-                    ],
-                    [
-                        "v50.0",
-                        0.1
-                    ],
-                    [
-                        "v48.0",
-                        0.31
-                    ],
-                    [
-                        "v47.0",
-                        0.12
-                    ]
                 ]
             },
             {
-                name: "Internet Explorer",
+                name: "Angustia",
                 id: "Internet Explorer",
                 data: [
                     [
-                        "v11.0",
-                        6.2
+                        "Mañana",
+                        parseFloat('{{ elemento.manana_angustia }}')
                     ],
                     [
-                        "v10.0",
-                        0.29
+                        "Medio día",
+                        parseFloat('{{ elemento.mediaDia_angustia }}')
                     ],
                     [
-                        "v9.0",
-                        0.27
+                        "Tarde",
+                        parseFloat('{{ elemento.tarde_angustia }}')
                     ],
                     [
-                        "v8.0",
-                        0.47
+                        "Noche",
+                        parseFloat('{{ elemento.noche_angustia }}')
                     ]
                 ]
             },
             {
-                name: "Safari",
+                name: "Ansia",
                 id: "Safari",
                 data: [
                     [
-                        "v11.0",
-                        3.39
+                        "Mañana",
+                        parseFloat('{{ elemento.manana_ansia }}')
                     ],
                     [
-                        "v10.1",
-                        0.96
+                        "Medio día",
+                        parseFloat('{{ elemento.medioDia_ansia }}')
                     ],
                     [
-                        "v10.0",
-                        0.36
+                        "Tarde",
+                        parseFloat('{{ elemento.tarde_ansia }}')
                     ],
                     [
-                        "v9.1",
-                        0.54
+                        "Noche",
+                        parseFloat('{{ elemento.noche_ansia }}')
                     ],
-                    [
-                        "v9.0",
-                        0.13
-                    ],
-                    [
-                        "v5.1",
-                        0.2
-                    ]
                 ]
             },
             {
-                name: "Edge",
+                name: "Miedo",
                 id: "Edge",
                 data: [
                     [
-                        "v16",
-                        2.6
+                        "Mañana",
+                        parseFloat('{{ elemento.manana_miedo }}')
                     ],
                     [
-                        "v15",
-                        0.92
+                        "Medio día",
+                        parseFloat('{{ elemento.medioDia_miedo }}')
                     ],
                     [
-                        "v14",
-                        0.4
+                        "Tarde",
+                        parseFloat('{{ elemento.tarde_miedo }}')
                     ],
                     [
-                        "v13",
-                        0.1
+                        "Noche",
+                        parseFloat('{{ elemento.noche_miedo }}')
                     ]
                 ]
             },
             {
-                name: "Opera",
+                name: "Frustacion",
                 id: "Opera",
                 data: [
                     [
-                        "v50.0",
-                        0.96
+                        "Mañana",
+                        parseFloat('{{ elemento.manana_frustracion }}')
                     ],
                     [
-                        "v49.0",
-                        0.82
+                        "Medio día",
+                        parseFloat('{{ elemento.medioDia_frustracion }}')
                     ],
                     [
-                        "v12.1",
-                        0.14
+                        "Tarde",
+                        parseFloat('{{ elemento.tarde_frustracion }}')
+                    ],
+                    [
+                        "Noche",
+                        parseFloat('{{ elemento.noche_frustracion }}')
+                    ],
+                ]
+            },
+            {
+                name: "Miedo",
+                id: "Edge",
+                data: [
+                    [
+                        "Mañana",
+                        parseFloat('{{ elemento.manana_miedo }}')
+                    ],
+                    [
+                        "Medio día",
+                        parseFloat('{{ elemento.medioDia_miedo }}')
+                    ],
+                    [
+                        "Tarde",
+                        parseFloat('{{ elemento.tarde_miedo }}')
+                    ],
+                    [
+                        "Noche",
+                        parseFloat('{{ elemento.noche_miedo }}')
                     ]
                 ]
-            }
+            },
         ]
     }
 });
     </script>
+    {% endifequal %}
+    {% endfor %}
 </body>
 </html>

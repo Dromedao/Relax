@@ -1,0 +1,14 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'DM Sans', sans-serif;
+    background-color: #ffffff;
+    background-color: aquamarine;
+}
+
+section{
+    width: 30%;
+    margin: 0 auto;
+}
+

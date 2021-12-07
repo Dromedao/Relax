@@ -28,4 +28,5 @@ urlpatterns = [
     path("playAndRelax/", views.playAndRelax),
     path("contacts/", views.definirContactor),
     path("send/", views.enviarCorreos),
+    path("video/", views.video),
 ]
