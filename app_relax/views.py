@@ -210,11 +210,11 @@ def FormularioView(request):
 
                 # form.save(commit=False).porcentaje_tristeza = (form.save(commit=False).contador_tristeza * 100) / form.save(commit=False).total_presion
 
-                if 6 < int(datetime.datetime.now().strftime("%H")) < 11:
+                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
                     form.save(commit=False).manana_tristeza += 1
-                elif 12 < int(datetime.datetime.now().strftime("%H")) < 16:
+                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
                     form.save(commit=False).medioDia_tristeza += 1
-                elif 17 < int(datetime.datetime.now().strftime("%H")) < 20:
+                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
                     form.save(commit=False).tarde_tristeza += 1
                 else:
                     form.save(commit=False).noche_tristeza += 1
@@ -224,11 +224,11 @@ def FormularioView(request):
 
                 # form.save(commit=False).porcentaje_rabia = (form.save(commit=False).contador_rabia * 100) / form.save(commit=False).total_presion
 
-                if 6 < int(datetime.datetime.now().strftime("%H")) < 11:
+                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
                     form.save(commit=False).manana_rabia += 1
-                elif 12 < int(datetime.datetime.now().strftime("%H")) < 16:
+                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
                     form.save(commit=False).medioDia_rabia += 1
-                elif 17 < int(datetime.datetime.now().strftime("%H")) < 20:
+                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
                     form.save(commit=False).tarde_rabia += 1
                 else:
                     form.save(commit=False).noche_rabia += 1
@@ -238,11 +238,11 @@ def FormularioView(request):
 
                 # form.save(commit=False).porcentaje_angustia = (form.save(commit=False).contador_angustia * 100) / form.save(commit=False).total_presion
 
-                if 6 < int(datetime.datetime.now().strftime("%H")) < 11:
+                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
                     form.save(commit=False).manana_angustia += 1
-                elif 12 < int(datetime.datetime.now().strftime("%H")) < 16:
+                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
                     form.save(commit=False).medioDia_angustia += 1
-                elif 17 < int(datetime.datetime.now().strftime("%H")) < 20:
+                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
                     form.save(commit=False).tarde_angustia += 1
                 else:
                     form.save(commit=False).noche_angustia += 1
@@ -252,11 +252,11 @@ def FormularioView(request):
 
                 # form.save(commit=False).porcentaje_ansia = (form.save(commit=False).contador_ansia * 100) / form.save(commit=False).total_presion
 
-                if 6 < int(datetime.datetime.now().strftime("%H")) < 11:
+                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
                     form.save(commit=False).manana_ansia += 1
-                elif 12 < int(datetime.datetime.now().strftime("%H")) < 16:
+                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
                     form.save(commit=False).mediaDia_ansia += 1
-                elif 17 < int(datetime.datetime.now().strftime("%H")) < 20:
+                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
                     form.save(commit=False).tarde_ansia += 1
                 else:
                     form.save(commit=False).noche_ansia += 1
@@ -266,11 +266,11 @@ def FormularioView(request):
 
                 # form.save(commit=False).porcentaje_miedo = (form.save(commit=False).contador_miedo * 100) / form.save(commit=False).total_presion
 
-                if 6 < int(datetime.datetime.now().strftime("%H")) < 11:
+                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
                     form.save(commit=False).manana_miedo += 1
-                elif 12 < int(datetime.datetime.now().strftime("%H")) < 16:
+                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
                     form.save(commit=False).medioDia_miedo += 1
-                elif 17 < int(datetime.datetime.now().strftime("%H")) < 20:
+                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
                     form.save(commit=False).tarde_miedo += 1
                 else:
                     form.save(commit=False).noche_miedo += 1
@@ -280,11 +280,11 @@ def FormularioView(request):
 
                 # form.save(commit=False).porcentaje_frustracion = (form.save(commit=False).contador_frustracion * 100) / form.save(commit=False).total_presion
 
-                if 6 < int(datetime.datetime.now().strftime("%H")) < 11:
+                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
                     form.save(commit=False).manana_frustracion += 1
-                elif 12 < int(datetime.datetime.now().strftime("%H")) < 16:
+                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
                     form.save(commit=False).medioDia_frustracion += 1
-                elif 17 < int(datetime.datetime.now().strftime("%H")) < 20:
+                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
                     form.save(commit=False).tarde_frustracion += 1
                 else:
                     form.save(commit=False).noche_frustracion += 1
@@ -294,11 +294,11 @@ def FormularioView(request):
 
                 # form.save(commit=False).porcentaje_verguenza = (form.save(commit=False).contador_verguenza * 100) / form.save(commit=False).total_presion
 
-                if 6 < int(datetime.datetime.now().strftime("%H")) < 11:
+                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
                     form.save(commit=False).manana_verguenza += 1
-                elif 12 < int(datetime.datetime.now().strftime("%H")) < 16:
+                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
                     form.save(commit=False).medioDia_verguenza += 1
-                elif 17 < int(datetime.datetime.now().strftime("%H")) < 20:
+                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
                     form.save(commit=False).tarde_verguenza += 1
                 else:
                     form.save(commit=False).noche_verguenza += 1
@@ -313,11 +313,11 @@ def FormularioView(request):
 
             print(datetime.datetime.now().strftime("%H"))
 
-            if 6 < int(datetime.datetime.now().strftime("%H")) < 11:
+            if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
                 pass
-            elif 12 < int(datetime.datetime.now().strftime("%H")) < 16:
+            elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
                 pass
-            elif 17 < int(datetime.datetime.now().strftime("%H")) < 20:
+            elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
                 pass
             else:
                 pass
