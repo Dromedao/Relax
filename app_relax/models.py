@@ -97,17 +97,17 @@ class Formulario(models.Model):
         return f'{self.user.username}'
 class HowDoYouFeel(models.Model):
     lista_dias= [
-        [0, "Bueno"],
-        [1, "Decente"],
+        [0, "Good"],
+        [1, "Decent"],
         [2, "Normal"],
-        [3, "Malo"],
+        [3, "Bad"],
         [4, "Terrible"],
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='howdoyoufeel', blank=True, null=True)
     Como_estuvo_tu_dia = models.IntegerField(choices=lista_dias)
     algo = models.CharField(max_length=10000, default = "", blank=True, null=True)
     dias = [0,0,0,0,0]
-    
+
     def __str__(self):
         return f'{self.user.username}'
 

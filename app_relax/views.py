@@ -52,17 +52,17 @@ def send_email(request):
 
     template = get_template('app_relax/mail.html')
     content = template.render()
-    
+
     producto = get_object_or_404(Profile, user = request.user)
     form = Contactos(request.POST, instance=producto, files=request.FILES)
 
     #print(form.save(commit=False).contactos, "aaaaaaaaaaaaaaaa")
     mail = form.save(commit=False).contactos[:len(form.save(commit=False).contactos)-1]
-    
+
     mail = mail.split("&")
 
     email = EmailMultiAlternatives(
-        'Titulo',
+        'Help me!',
         'Descripcion',
         'diezdediezteam@gmail.com',
         mail,
@@ -114,7 +114,7 @@ def register(request):
     else:
         form = UserRegisterForm()
     context = {'form' : form }
-    return render(request, 'app_relax/register.html', context)  
+    return render(request, 'app_relax/register.html', context)
 
 def paint(request):
     return render(request, "app_relax/paint.html")
@@ -168,7 +168,7 @@ def hello_user(request):
         form = DogsForm()
     imagen_perro = get_dog()
     listado = {
-        "form" : form, 
+        "form" : form,
         "message" : imagen_perro
     }
     print(form)
@@ -235,7 +235,7 @@ def HowDoYouFeelView(request):
                         #formulario.save(commit=False).porcentaje_buenos = (formulario.save(commit=False).dias_buenos * 100)/formulario.save(commit=False).total
                     if formulario.save(commit=False).total == 0:
                         formulario.save(commit=False).porcentaje_buenos = 100
-                
+
                 elif formulario.save(commit=False).Como_estuvo_tu_dia == 1:
                     formulario.save(commit=False).dias_decentes += 1
                     #formulario.save(commit=False).algo += "D"
@@ -243,7 +243,7 @@ def HowDoYouFeelView(request):
                         #formulario.save(commit=False).porcentaje_decentes = (formulario.save(commit=False).dias_decentes * 100)/formulario.save(commit=False).total
                     if formulario.save(commit=False).total == 0:
                         formulario.save(commit=False).porcentaje_decentes = 100
-                
+
                 elif formulario.save(commit=False).Como_estuvo_tu_dia == 2:
                     formulario.save(commit=False).dias_normales += 1
                     #formulario.save(commit=False).algo += "N"
@@ -273,13 +273,13 @@ def HowDoYouFeelView(request):
                     formulario.save(commit=False).porcentaje_normales = (formulario.save(commit=False).dias_normales * 100)/formulario.save(commit=False).total
                     formulario.save(commit=False).porcentaje_malos = (formulario.save(commit=False).dias_malos * 100)/formulario.save(commit=False).total
                     formulario.save(commit=False).porcentaje_terribles = (formulario.save(commit=False).dias_terribles * 100)/formulario.save(commit=False).total
-                
+
                 #formulario.save(commit=False).algo += str(datetime.datetime.now().strftime("%Y-%m-%d")) + '&'
                 #formulario.save(commit=False).total += 1
                 #formulario.save(commit=False).escribe_una_palabra = formulario.save(commit=False).escribe_una_palabra.replace("$","")
                 #formulario.save(commit=False).algo = formulario.save(commit=False).algo.replace("$","")
                 formulario.save(commit=False).Como_estuvo_tu_dia = None
-                
+
                 if formulario.save(commit=False).algo is None and formulario.save(commit=False).escribe_una_palabra != None:
                     formulario.save(commit=False).algo = formulario.save(commit=False).escribe_una_palabra + " "
                     formulario.save(commit=False).escribe_una_palabra = ""

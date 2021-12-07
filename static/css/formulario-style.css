@@ -6,6 +6,8 @@ body, html{
 }
 
 div{
+    display: flex;
+    align-items: center;
     width: 40%;
     margin: 0 auto;
     background-color: aquamarine;

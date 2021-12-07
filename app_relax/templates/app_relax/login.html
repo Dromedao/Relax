@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static '/css/login-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <form action="" method="POST">
@@ -20,8 +20,8 @@
             <h1>Login</h1>
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Iniciar sesión</button>
-            <a href="/register/">¿Todavia no tienes una cuenta?</a>
+            <button type="submit">Log in</button>
+            <a href="/register/">Don't you have an account yet?</a>
         </div>
     </form>
 </body>

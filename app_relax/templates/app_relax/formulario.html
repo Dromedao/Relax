@@ -11,16 +11,16 @@
     <link rel="stylesheet" type="text/css" href="{% static '/css/formulario-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <form action="" method="POST">
         <div class="container">
             <form action="" method="POST">
-                <h2>Describe por qué detonaste el botón de pánico</h2>
+                <h2>Describe why you detonated the panic button</h2>
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit">Enviar</button>
+                <button type="submit">Send</button>
             </form>
         </div>
     </form>

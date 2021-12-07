@@ -11,18 +11,18 @@
     <link rel="stylesheet" type="text/css" href="{% static '/css/definir-contactos-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <form action="" method="POST">
-        <h1>Ingresa el correo de tu contacto</h1>
+        <h1>Enter your contacts</h1>
         {% csrf_token %}
         <!-- {{ form }} -->
         <input type="text" name="contacto">
-        <button type="submit">Guardar</button>
+        <button type="submit">Save</button>
     </form>
     <section>
-        <h3>Contactos del usuario:</h3>
+        <h3>Your emergency contacts:</h3>
         {% for elemento in algo %}
         {{ elemento }}
         <br>

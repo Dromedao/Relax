@@ -11,16 +11,16 @@
     <link rel="stylesheet" href="{% static '/css/register-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <form action="" method="POST">
 
         <div class="container">
-            <h1>Formulario de registro</h1>
+            <h1>Registration form</h1>
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Registrarse</button>
+            <button type="submit">Register</button>
         </div>
 
     </form>

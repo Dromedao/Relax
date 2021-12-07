@@ -11,13 +11,13 @@
     <link rel="stylesheet" type="text/css" href="{% static '/css/enviar-correo-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <form action="" method="POST">
         {% csrf_token %}
-        <h1>Al presionar el boton se enviará un correo de la situación a tus contactos definidos</h1>
-        <button type="submit">Enviar</button>
+        <h1>Press the button to notify your emergency contacts about the situation you are going through.</h1>
+        <button type="submit">Send</button>
     </form>
 </body>
 </html>
