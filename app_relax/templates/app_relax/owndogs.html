@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relax</title>
 
+    <link rel="shortcut icon" href="{% static '/images/icono-relax.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/css/owndogs-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +21,7 @@
     <article>
         <img src="{{ elemento.imagen }}" alt="" width="400px">
         <br>
-        <p class="nombre">{{ elemento.nombre }}</p>
+        <p class="nombre">{{ elemento.Name }}</p>
         <p class="fecha" >{{ elemento.fecha }}</p>
     </article>
     {% endifequal %}

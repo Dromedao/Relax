@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relax</title>
 
+    <link rel="shortcut icon" href="{% static '/images/icono-relax.png' %}">
     <script src="{% static '/lib/highcharts/highcharts.js' %}"></script>
     <script src="{% static '/lib/highcharts/modules/data.js' %}"></script>
     <script src="{% static '/lib/highcharts/modules/drilldown.js' %}"></script>
@@ -34,10 +35,10 @@
         type: 'column'
     },
     title: {
-        text: 'Browser market shares. January, 2018'
+        text: 'Recording your feelings when using the panic button '
     },
     subtitle: {
-        text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
+        text: 'Click the columns to view more details.'
     },
     accessibility: {
         announceNewData: {
@@ -73,41 +74,41 @@
 
     series: [
         {
-            name: "Sentimientos",
+            name: "Sentiment",
             colorByPoint: true,
             data: [
                 {
-                    name: "Tristeza",
+                    name: "Sadness",
                     y: parseFloat('{{ elemento.porcentaje_tristeza }}'),
                     drilldown: "Chrome"
                 },
                 {
-                    name: "Rabia",
+                    name: "Rage",
                     y: parseFloat('{{ elemento.porcentaje_rabia }}'),
                     drilldown: "Firefox"
                 },
                 {
-                    name: "Angustia",
+                    name: "Anguish",
                     y: parseFloat('{{ elemento.porcentaje_angustia }}'),
                     drilldown: "Internet Explorer"
                 },
                 {
-                    name: "Ansia",
+                    name: "Anxiety",
                     y: parseFloat('{{ elemento.porcentaje_ansia }}'),
                     drilldown: "Safari"
                 },
                 {
-                    name: "Miedo",
+                    name: "Fear",
                     y: parseFloat('{{ elemento.porcentaje_miedo }}'),
                     drilldown: "Edge"
                 },
                 {
-                    name: "Frustación",
+                    name: "Frustration",
                     y: parseFloat('{{ elemento.porcentaje_frustracion }}'),
                     drilldown: "Opera"
                 },
                 {
-                    name: "Verguenza",
+                    name: "Shame",
                     y: parseFloat('{{ elemento.porcentaje_verguenza }}'),
                     drilldown: null
                 }
@@ -117,156 +118,156 @@
     drilldown: {
         series: [
             {
-                name: "Tristeza",
+                name: "Sadness",
                 id: "Chrome",
                 data: [
                     [
-                        "Mañana",
+                        "Morning",
                         parseFloat('{{ elemento.manana_tristeza }}')
                     ],
                     [
-                        "Medio día",
+                        "Noon",
                         parseFloat('{{ elemento.medioDia_tristeza }}')
                     ],
                     [
-                        "Tarde",
+                        "Afternoon",
                         parseFloat('{{ elemento.tarde_tristeza }}')
                     ],
                     [
-                        "Noche",
+                        "Evening",
                         parseFloat('{{ elemento.noche_tristeza }}')
                     ],
                 ]
             },
             {
-                name: "Rabia",
+                name: "Rage",
                 id: "Firefox",
                 data: [
                     [
-                        "Mañana",
+                        "Morning",
                         parseFloat('{{ elemento.manana_rabia }}')
                     ],
                     [
-                        "Medio día",
+                        "Noon",
                         parseFloat('{{ elemento.medioDia_rabia }}')
                     ],
                     [
-                        "Tarde",
+                        "Afternoon",
                         parseFloat('{{ elemento.tarde_rabia }}')
                     ],
                     [
-                        "Noche",
+                        "Evening",
                         parseFloat('{{ elemento.noche_rabia }}')
                     ],
                 ]
             },
             {
-                name: "Angustia",
+                name: "Anguish",
                 id: "Internet Explorer",
                 data: [
                     [
-                        "Mañana",
+                        "Morning",
                         parseFloat('{{ elemento.manana_angustia }}')
                     ],
                     [
-                        "Medio día",
+                        "Noon",
                         parseFloat('{{ elemento.mediaDia_angustia }}')
                     ],
                     [
-                        "Tarde",
+                        "Afternoon",
                         parseFloat('{{ elemento.tarde_angustia }}')
                     ],
                     [
-                        "Noche",
+                        "Evening",
                         parseFloat('{{ elemento.noche_angustia }}')
                     ]
                 ]
             },
             {
-                name: "Ansia",
+                name: "Anxiety",
                 id: "Safari",
                 data: [
                     [
-                        "Mañana",
+                        "Morning",
                         parseFloat('{{ elemento.manana_ansia }}')
                     ],
                     [
-                        "Medio día",
+                        "Noon",
                         parseFloat('{{ elemento.medioDia_ansia }}')
                     ],
                     [
-                        "Tarde",
+                        "Afternoon",
                         parseFloat('{{ elemento.tarde_ansia }}')
                     ],
                     [
-                        "Noche",
+                        "Evening",
                         parseFloat('{{ elemento.noche_ansia }}')
                     ],
                 ]
             },
             {
-                name: "Miedo",
+                name: "Fear",
                 id: "Edge",
                 data: [
                     [
-                        "Mañana",
+                        "Morning",
                         parseFloat('{{ elemento.manana_miedo }}')
                     ],
                     [
-                        "Medio día",
+                        "Noon",
                         parseFloat('{{ elemento.medioDia_miedo }}')
                     ],
                     [
-                        "Tarde",
+                        "Afternoon",
                         parseFloat('{{ elemento.tarde_miedo }}')
                     ],
                     [
-                        "Noche",
+                        "Evening",
                         parseFloat('{{ elemento.noche_miedo }}')
                     ]
                 ]
             },
             {
-                name: "Frustacion",
+                name: "Frustration",
                 id: "Opera",
                 data: [
                     [
-                        "Mañana",
+                        "Morning",
                         parseFloat('{{ elemento.manana_frustracion }}')
                     ],
                     [
-                        "Medio día",
+                        "Noon",
                         parseFloat('{{ elemento.medioDia_frustracion }}')
                     ],
                     [
-                        "Tarde",
+                        "Afternoon",
                         parseFloat('{{ elemento.tarde_frustracion }}')
                     ],
                     [
-                        "Noche",
+                        "Evening",
                         parseFloat('{{ elemento.noche_frustracion }}')
                     ],
                 ]
             },
             {
-                name: "Miedo",
+                name: "Shame",
                 id: "Edge",
                 data: [
                     [
-                        "Mañana",
-                        parseFloat('{{ elemento.manana_miedo }}')
+                        "Morning",
+                        parseFloat('{{ elemento.manana_verguenza }}')
                     ],
                     [
-                        "Medio día",
-                        parseFloat('{{ elemento.medioDia_miedo }}')
+                        "Noon",
+                        parseFloat('{{ elemento.medioDia_verguenza }}')
                     ],
                     [
-                        "Tarde",
-                        parseFloat('{{ elemento.tarde_miedo }}')
+                        "Afternoon",
+                        parseFloat('{{ elemento.tarde_verguenza }}')
                     ],
                     [
-                        "Noche",
-                        parseFloat('{{ elemento.noche_miedo }}')
+                        "Evening",
+                        parseFloat('{{ elemento.noche_verguenza }}')
                     ]
                 ]
             },

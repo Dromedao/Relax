@@ -27,11 +27,11 @@ class Dog(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Perro')
     #imagen = ImageField(default=get_dog())
     imagen = models.CharField(max_length=200, default="")
-    nombre = models.CharField(default="", max_length=200)
+    Name = models.CharField(default="", max_length=200)
     fecha = models.CharField(default=datetime.datetime.now().strftime("%Y-%m-%d"), max_length=200)
 
     def __str__(self):
-        return f'Perro de {self.user.username} llamado {self.nombre}'
+        return f'Perro de {self.user.username} llamado {self.Name}'
 
 class Profile(models.Model):
     #id = models.BigAutoField(primary_key=True)
@@ -48,36 +48,36 @@ class Profile(models.Model):
     dias_terribles = models.IntegerField(default=0)
     porcentaje_terribles = models.FloatField(default=0)
     total = models.IntegerField(default=0)
-    escribe_una_palabra = models.CharField(max_length=1000, default="Write a word", blank=True, null=True)
+    Write_a_word = models.CharField(max_length=1000, default="Write a word", blank=True, null=True)
     algo = models.CharField(max_length=1000, default="", blank=True, null=True)
     contactos = models.CharField(max_length=10000, default="", blank=True, null=True)
 
     # total_boton = models.IntegerField(default=0)
 
     lista_dias= [
-        [0, "Bueno"],
-        [1, "Decente"],
+        [0, "Good"],
+        [1, "Decent"],
         [2, "Normal"],
-        [3, "Malo"],
+        [3, "Bad"],
         [4, "Terrible"],
     ]
-    Como_estuvo_tu_dia = models.IntegerField(choices=lista_dias, default=None, blank=True, null=True)
+    How_was_your_day = models.IntegerField(choices=lista_dias, default=None, blank=True, null=True)
 
     #Formulario
     lista_sentimiento = [
-        [0, "Tristeza"],
-        [1, "Rabia"],
-        [2, "Angustia"],
-        [3, "Ansia"],
-        [4, "Miedo"],
-        [5, "Frustración"],
-        [6, "Verguenza"],
+        [0, "Sadness"],
+        [1, "Rage"],
+        [2, "Anguish"],
+        [3, "Anxiety"],
+        [4, "Fear"],
+        [5, "Frustration"],
+        [6, "Shame"],
         ]
     #user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='formulario')
-    situacion = models.CharField(max_length=200, default="")
-    detonante = models.CharField(default="", max_length=200)
-    sentimiento = models.IntegerField(default=2, choices=lista_sentimiento)
-    intensidad = models.IntegerField(default=0, choices=[(i,i) for i in range(6)])
+    situation = models.CharField(max_length=200, default="")
+    trigger = models.CharField(default="", max_length=200)
+    sentiment = models.IntegerField(default=None, choices=lista_sentimiento)
+    intensity = models.IntegerField(default=0, choices=[(i,i) for i in range(6)])
 
     total_presion = models.IntegerField(default=0)
     #Situaciones
@@ -130,8 +130,6 @@ class Profile(models.Model):
     porcentaje_miedo = models.FloatField(default=0)
     porcentaje_frustracion = models.FloatField(default=0)
     porcentaje_verguenza = models.FloatField(default=0)
-
-
 
     def __str__(self):
         return f'Perfil de {self.user.username}'

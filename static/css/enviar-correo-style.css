@@ -7,8 +7,28 @@ body, html{
     height: 100%;
 }
 
+img{
+    width: 150px;
+}
+
+div{
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
+}
+
+h1{
+    margin-left: 5%;
+}
+
 form{
     width: 30%;
     margin: 0 auto;
     text-align: center;
 }
+
+/* @media (max-width: 800px){
+    img{
+        width: 150px;
+    }  
+} */

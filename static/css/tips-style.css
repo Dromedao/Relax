@@ -6,13 +6,33 @@ body, html{
     background-color: #ffffff;
 }
 
+/* .container{
+    display: inline;
+} */
+
+h1{
+    text-align: center;
+}
+
 div{
     background-image: linear-gradient(aquamarine, #87cefa, #E6E6FA);
-    width: 40%;
-    padding: 2px 5% 15% 5%;
+    width: 60%;
+    margin: 0 auto;
+    /* padding: 2px 5% 15% 5%; */
     border-radius: 15px;
-    margin: 2% 0% 0% 2%;
-    float: left;
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    /* margin: 2% 0% 0% 2%; */
+    /* float: left; */
+}
+
+li{
+    margin-top: 15px;
+}
+
+li:hover{
+    color: white;
 }
 
 img{

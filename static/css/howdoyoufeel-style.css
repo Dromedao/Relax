@@ -8,14 +8,20 @@ body, html{
 }
 
 form{
+    transform: translateY(100%);
+    padding: 20px 0 20px 10px ;
     width: 30%;
     margin: 0 auto;
     /* text-align: center; */
     margin-top: 2%;
-    background-color: aquamarine;
-    border-radius: 5px;
+    background-image: linear-gradient(aquamarine, #87cefa, #E6E6FA);
+    border-radius: 20px;
 }
 
 form button{
     margin: 0 auto;
+}
+
+select, input {
+    border-radius: 5px;
 }

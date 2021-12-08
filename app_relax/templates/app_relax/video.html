@@ -9,17 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relax</title>
 
+    <link rel="shortcut icon" href="{% static '/images/icono-relax.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/css/video-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet"> 
 </head>
 <body>
+    <h1> Reconmended videos</h1>
     <section>
-        <h1> Reconmended videos</h1>
         {% for elemento in video %}
-        {% video elemento.video  'small' %}
-        <br>
+        <div>{% video elemento.video  'small' %}</div>
+        <!-- <br>
+        <br> -->
         {% endfor %}
     </section>
 </body>

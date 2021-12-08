@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="shortcut icon" href="{% static '/images/icono-relax.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/css/enviar-correo-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +17,11 @@
 <body>
     <form action="" method="POST">
         {% csrf_token %}
-        <h1>Press the button to notify your emergency contacts about the situation you are going through.</h1>
+        <div>
+            <img src="{% static '/images/message-icon.png' %}" alt="">
+            <h1>Notify my contacts</h1>
+        </div>
+        <p>Press the button to notify your emergency contacts about the situation you are going through.</p>
         <button type="submit">Send</button>
     </form>
 </body>

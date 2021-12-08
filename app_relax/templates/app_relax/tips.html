@@ -1,37 +1,50 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relax</title>
 
+    <link rel="shortcut icon" href="{% static '/images/icono-relax.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/css/tips-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <!-- <header>
-        <nav id="navegation-bar">
-            <ul id="ul-nav">
-                <li><a class="a-nav" href="http://localhost:8000/home/" class="a-bar">Home</a></li>
-                <li><a class="a-nav" href="http://localhost:8000/about/" class="a-bar">Acerca</a></li>
-                <li><a class="a-nav" href="http://localhost:8000/anxiety-tips/" class="a-bar">Tips ansiedad</a></li>
-                <li><a class="a-nav" href="http://localhost:8000/stats/" class="a-bar">Estadisticas</a></li>
-            </ul>
-        </nav>
-    </header> -->
-    <div>
-        <p>Did you know...</p>
+    <h1>Anxiety tips</h1>
+    <div class="container">
+        <h2>Did you know...</h2>
+        <!-- <p>Did you know...</p> -->
+        <span></span><ul>
+            <li>Regular exercise helps control anxiety</li>
+            <li>Sleeping hours are very important, 6 to 8 hours of sleep is necessary.</li>
+            <li>Avoid high consumption of alcoholic beverages</li>
+            <li>Avoid all drug use, avoid caffeine and exciting substances such as energy drinks.</li>
+        </ul></span>
+        <!-- <span><img src="{% static 'images/not-recommended.png' %}" alt=""></span> -->
     </div>
-
-    <img src="{% static 'images/not-recommended.png' %}" alt="">
     
     <div>
-        <p>Relaxing techniques</p>
+        <h2>Relaxing techniques</h2>
+        <!-- <p>Relaxing techniques</p> -->
+        <ul>
+            <li>Distraction is a technique, try talking to someone, singing your favorite song or doing an activity that you enjoy.</li>
+            <li>Slow diaphragmatic breathing: It consists of placing one hand on the chest and the other on the stomach,
+                inhale until you feel the lungs fill with air, and exhale the air without the hand on the chest moving. Practice this several times a day
+                Do not use this method if you do not feel 100% comfortable. </li>
+            <li>Self-instructions: Try to make cards that help you, memorize them and repeat them every time you face situations or sensations. Always carry them
+                with you. Adapt and modify them according to your needs.
+            </li>
+            <li>Positive imagination is your help: Change your thoughts, a tip is to imagine yourself in a situation facing what happened and achieving it, visualize your feelings when you achieve it.
+                visualize your feelings when you achieve it, practice it several times and identify your thoughts and what they cause. Stay positive :)
+            </li>
+            <li>Do not be afraid to face, feelings and anxiety diminish if you stop trying to run away from them and accept them.</li>
+            <li>Practice relaxation techniques daily, they change depending on the person so look for the one that makes you feel more comfortable.</li>
+        <ul>
     </div>
 </body>
 </html>

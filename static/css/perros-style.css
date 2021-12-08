@@ -52,6 +52,29 @@ form p{
     width: 100%;
 }
 
+p{
+    text-align: center;
+}
+
+.removelinkdefault {
+    color: black;
+    text-decoration: none;
+}
+
+.removelinkdefault:hover{
+    color: black;
+}
+
+a{
+    border-style: solid;
+    border-width: 2px;
+    padding: 2.2px 4px;
+    border-color: black;
+    /* display: none; */
+    text-decoration: none;
+    background-color:#F0F0F0
+}
+
 /* #scotch-div{
     width: 25%;
     margin: 0 auto;

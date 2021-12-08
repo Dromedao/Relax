@@ -134,17 +134,19 @@ def paint(request):
 
 
 def nota(request):
-    current_user = get_object_or_404(User, pk=request.user.pk)
-    if request.method == "POST":
-        form = NoteForm(request.POST)
-        if form.is_valid():
-            nota = form.save(commit=False)
-            nota.user = current_user
-            nota.save()
-            messages.success(request, 'Nota subida')
-            return redirect("/notes/")
-    else:
-        form = NoteForm()
+    print(request.user.is_authenticated)
+    if request.user.is_authenticated:
+        current_user = get_object_or_404(User, pk=request.user.pk)
+        if request.method == "POST":
+            form = NoteForm(request.POST)
+            if form.is_valid():
+                nota = form.save(commit=False)
+                nota.user = current_user
+                nota.save()
+                messages.success(request, 'Nota subida')
+                return redirect("/notes/")
+        else:
+            form = NoteForm()
     return render(request, 'app_relax/newnote.html', {'form' : form })
 
 # def perros(request):
@@ -165,17 +167,19 @@ from .services import get_dog
 
 
 def hello_user(request):
-    current_user = get_object_or_404(User, pk=request.user.pk)
-    if request.method == "POST":
-        form = DogsForm(request.POST)
-        if form.is_valid():
-            dog = form.save(commit=False)
-            dog.user = current_user
-            dog.imagen = request.POST.get("imagen")
-            dog.save()
-            messages.success(request, 'Perro guardado')
-    else:
-        form = DogsForm()
+    if request.user.is_authenticated:
+        current_user = get_object_or_404(User, pk=request.user.pk)
+        if request.method == "POST":
+            form = DogsForm(request.POST)
+            if form.is_valid():
+                dog = form.save(commit=False)
+                dog.user = current_user
+                dog.imagen = request.POST.get("imagen")
+                dog.save()
+                messages.success(request, 'Perro guardado')
+                return redirect('/dogs/')
+        else:
+            form = DogsForm()
     imagen_perro = get_dog()
     listado = {
         "form" : form,
@@ -190,118 +194,123 @@ def MostrarPerros(request):
     return render(request, 'app_relax/owndogs.html', context)
 
 def FormularioView(request):
-    producto = get_object_or_404(Profile, user = request.user)
+    if request.user.is_authenticated:
+        producto = get_object_or_404(Profile, user = request.user)
 
-    data = {
-        'form': SentimientoForm(instance=producto)
-    }
-
-    if request.method == "POST":
-        current_user = get_object_or_404(User, pk=request.user.pk)
-        form = SentimientoForm(data=request.POST, instance=producto, files=request.FILES)
+        data = {
+            'form': SentimientoForm(instance=producto)
+        }
+    else:
+        data = {
+            'form' : SentimientoForm()
+        }
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            current_user = get_object_or_404(User, pk=request.user.pk)
+            form = SentimientoForm(data=request.POST, instance=producto, files=request.FILES)
         # form = SentimientoForm(request.POST)
 
-        if form.is_valid():
-            form.save(commit=False).total_presion += 1
-            print(form.save(commit=False).sentimiento)
+            if form.is_valid():
+                form.save(commit=False).total_presion += 1
+                print(form.save(commit=False).sentiment)
 
-            if form.save(commit=False).sentimiento == 0:
-                form.save(commit=False).contador_tristeza += 1
+                if form.save(commit=False).sentiment == 0:
+                    form.save(commit=False).contador_tristeza += 1
 
                 # form.save(commit=False).porcentaje_tristeza = (form.save(commit=False).contador_tristeza * 100) / form.save(commit=False).total_presion
 
-                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
-                    form.save(commit=False).manana_tristeza += 1
-                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
-                    form.save(commit=False).medioDia_tristeza += 1
-                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
-                    form.save(commit=False).tarde_tristeza += 1
-                else:
-                    form.save(commit=False).noche_tristeza += 1
+                    if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
+                        form.save(commit=False).manana_tristeza += 1
+                    elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
+                        form.save(commit=False).medioDia_tristeza += 1
+                    elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
+                        form.save(commit=False).tarde_tristeza += 1
+                    else:
+                        form.save(commit=False).noche_tristeza += 1
             
-            if form.save(commit=False).sentimiento == 1:
-                form.save(commit=False).contador_rabia += 1
+                if form.save(commit=False).sentiment == 1:
+                    form.save(commit=False).contador_rabia += 1
 
-                # form.save(commit=False).porcentaje_rabia = (form.save(commit=False).contador_rabia * 100) / form.save(commit=False).total_presion
+                    # form.save(commit=False).porcentaje_rabia = (form.save(commit=False).contador_rabia * 100) / form.save(commit=False).total_presion
 
-                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
-                    form.save(commit=False).manana_rabia += 1
-                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
-                    form.save(commit=False).medioDia_rabia += 1
-                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
-                    form.save(commit=False).tarde_rabia += 1
-                else:
-                    form.save(commit=False).noche_rabia += 1
+                    if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
+                        form.save(commit=False).manana_rabia += 1
+                    elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
+                        form.save(commit=False).medioDia_rabia += 1
+                    elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
+                        form.save(commit=False).tarde_rabia += 1
+                    else:
+                        form.save(commit=False).noche_rabia += 1
 
-            if form.save(commit=False).sentimiento == 2:
-                form.save(commit=False).contador_angustia += 1
+                if form.save(commit=False).sentiment == 2:
+                    form.save(commit=False).contador_angustia += 1
 
-                # form.save(commit=False).porcentaje_angustia = (form.save(commit=False).contador_angustia * 100) / form.save(commit=False).total_presion
+                    # form.save(commit=False).porcentaje_angustia = (form.save(commit=False).contador_angustia * 100) / form.save(commit=False).total_presion
 
-                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
-                    form.save(commit=False).manana_angustia += 1
-                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
-                    form.save(commit=False).medioDia_angustia += 1
-                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
-                    form.save(commit=False).tarde_angustia += 1
-                else:
-                    form.save(commit=False).noche_angustia += 1
-            
-            if form.save(commit=False).sentimiento == 3:
-                form.save(commit=False).contador_ansia += 1
+                    if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
+                        form.save(commit=False).manana_angustia += 1
+                    elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
+                        form.save(commit=False).medioDia_angustia += 1
+                    elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
+                        form.save(commit=False).tarde_angustia += 1
+                    else:
+                        form.save(commit=False).noche_angustia += 1
+                
+                if form.save(commit=False).sentiment == 3:
+                    form.save(commit=False).contador_ansia += 1
 
-                # form.save(commit=False).porcentaje_ansia = (form.save(commit=False).contador_ansia * 100) / form.save(commit=False).total_presion
+                    # form.save(commit=False).porcentaje_ansia = (form.save(commit=False).contador_ansia * 100) / form.save(commit=False).total_presion
 
-                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
-                    form.save(commit=False).manana_ansia += 1
-                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
-                    form.save(commit=False).mediaDia_ansia += 1
-                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
-                    form.save(commit=False).tarde_ansia += 1
-                else:
-                    form.save(commit=False).noche_ansia += 1
+                    if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
+                        form.save(commit=False).manana_ansia += 1
+                    elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
+                        form.save(commit=False).mediaDia_ansia += 1
+                    elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
+                        form.save(commit=False).tarde_ansia += 1
+                    else:
+                        form.save(commit=False).noche_ansia += 1
 
-            if form.save(commit=False).sentimiento == 4:
-                form.save(commit=False).contador_miedo += 1
+                if form.save(commit=False).sentiment == 4:
+                    form.save(commit=False).contador_miedo += 1
 
-                # form.save(commit=False).porcentaje_miedo = (form.save(commit=False).contador_miedo * 100) / form.save(commit=False).total_presion
+                    # form.save(commit=False).porcentaje_miedo = (form.save(commit=False).contador_miedo * 100) / form.save(commit=False).total_presion
 
-                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
-                    form.save(commit=False).manana_miedo += 1
-                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
-                    form.save(commit=False).medioDia_miedo += 1
-                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
-                    form.save(commit=False).tarde_miedo += 1
-                else:
-                    form.save(commit=False).noche_miedo += 1
+                    if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
+                        form.save(commit=False).manana_miedo += 1
+                    elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
+                        form.save(commit=False).medioDia_miedo += 1
+                    elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
+                        form.save(commit=False).tarde_miedo += 1
+                    else:
+                        form.save(commit=False).noche_miedo += 1
 
-            if form.save(commit=False).sentimiento == 5:
-                form.save(commit=False).contador_frustracion += 1
+                if form.save(commit=False).sentiment == 5:
+                    form.save(commit=False).contador_frustracion += 1
 
-                # form.save(commit=False).porcentaje_frustracion = (form.save(commit=False).contador_frustracion * 100) / form.save(commit=False).total_presion
+                    # form.save(commit=False).porcentaje_frustracion = (form.save(commit=False).contador_frustracion * 100) / form.save(commit=False).total_presion
 
-                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
-                    form.save(commit=False).manana_frustracion += 1
-                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
-                    form.save(commit=False).medioDia_frustracion += 1
-                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
-                    form.save(commit=False).tarde_frustracion += 1
-                else:
-                    form.save(commit=False).noche_frustracion += 1
+                    if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
+                        form.save(commit=False).manana_frustracion += 1
+                    elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
+                        form.save(commit=False).medioDia_frustracion += 1
+                    elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
+                        form.save(commit=False).tarde_frustracion += 1
+                    else:
+                        form.save(commit=False).noche_frustracion += 1
 
-            if form.save(commit=False).sentimiento == 6:
-                form.save(commit=False).contador_verguenza += 1
+                if form.save(commit=False).sentiment == 6:
+                    form.save(commit=False).contador_verguenza += 1
 
-                # form.save(commit=False).porcentaje_verguenza = (form.save(commit=False).contador_verguenza * 100) / form.save(commit=False).total_presion
+                    # form.save(commit=False).porcentaje_verguenza = (form.save(commit=False).contador_verguenza * 100) / form.save(commit=False).total_presion
 
-                if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
-                    form.save(commit=False).manana_verguenza += 1
-                elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
-                    form.save(commit=False).medioDia_verguenza += 1
-                elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
-                    form.save(commit=False).tarde_verguenza += 1
-                else:
-                    form.save(commit=False).noche_verguenza += 1
+                    if 6 <= int(datetime.datetime.now().strftime("%H")) <= 11:
+                        form.save(commit=False).manana_verguenza += 1
+                    elif 12 <= int(datetime.datetime.now().strftime("%H")) <= 16:
+                        form.save(commit=False).medioDia_verguenza += 1
+                    elif 17 <= int(datetime.datetime.now().strftime("%H")) <= 20:
+                        form.save(commit=False).tarde_verguenza += 1
+                    else:
+                        form.save(commit=False).noche_verguenza += 1
 
             form.save(commit=False).porcentaje_tristeza = (form.save(commit=False).contador_tristeza * 100) / form.save(commit=False).total_presion
             form.save(commit=False).porcentaje_rabia = (form.save(commit=False).contador_rabia * 100) / form.save(commit=False).total_presion
@@ -366,7 +375,7 @@ def HowDoYouFeelView(request):
             #forma.dias_buenos += 1
                 #formulario.dias_buenos += 1
                 formulario.save(commit=False).total = formulario.save(commit=False).dias_buenos + formulario.save(commit=False).dias_decentes + formulario.save(commit=False).dias_normales + formulario.save(commit=False).dias_malos + formulario.save(commit=False).dias_terribles + 1
-                if formulario.save(commit=False).Como_estuvo_tu_dia == 0:
+                if formulario.save(commit=False).How_was_your_day == 0:
                     formulario.save(commit=False).dias_buenos += 1
                     #formulario.save(commit=False).algo += "B"
                     #if formulario.save(commit=False).total != 0:
@@ -374,7 +383,7 @@ def HowDoYouFeelView(request):
                     if formulario.save(commit=False).total == 0:
                         formulario.save(commit=False).porcentaje_buenos = 100
 
-                elif formulario.save(commit=False).Como_estuvo_tu_dia == 1:
+                elif formulario.save(commit=False).How_was_your_day == 1:
                     formulario.save(commit=False).dias_decentes += 1
                     #formulario.save(commit=False).algo += "D"
                     #if formulario.save(commit=False).total != 0:
@@ -382,7 +391,7 @@ def HowDoYouFeelView(request):
                     if formulario.save(commit=False).total == 0:
                         formulario.save(commit=False).porcentaje_decentes = 100
 
-                elif formulario.save(commit=False).Como_estuvo_tu_dia == 2:
+                elif formulario.save(commit=False).How_was_your_day == 2:
                     formulario.save(commit=False).dias_normales += 1
                     #formulario.save(commit=False).algo += "N"
                     #if formulario.save(commit=False).total != 0:
@@ -390,7 +399,7 @@ def HowDoYouFeelView(request):
                     if formulario.save(commit=False).total == 0:
                         formulario.save(commit=False).porcentaje_normales = 100
 
-                elif formulario.save(commit=False).Como_estuvo_tu_dia == 3:
+                elif formulario.save(commit=False).How_was_your_day == 3:
                     formulario.save(commit=False).dias_malos += 1
                     #formulario.save(commit=False).algo += "M"
                     #if formulario.save(commit=False).total != 0:
@@ -398,7 +407,7 @@ def HowDoYouFeelView(request):
                     if formulario.save(commit=False).total == 0:
                         formulario.save(commit=False).porcentaje_malos = 100
 
-                elif formulario.save(commit=False).Como_estuvo_tu_dia == 4:
+                elif formulario.save(commit=False).How_was_your_day == 4:
                     formulario.save(commit=False).dias_terribles += 1
                     #formulario.save(commit=False).algo += "T"
                     #if formulario.save(commit=False).total != 0:
@@ -416,16 +425,16 @@ def HowDoYouFeelView(request):
                 #formulario.save(commit=False).total += 1
                 #formulario.save(commit=False).escribe_una_palabra = formulario.save(commit=False).escribe_una_palabra.replace("$","")
                 #formulario.save(commit=False).algo = formulario.save(commit=False).algo.replace("$","")
-                formulario.save(commit=False).Como_estuvo_tu_dia = None
+                formulario.save(commit=False).How_was_your_day = None
 
-                if formulario.save(commit=False).algo is None and formulario.save(commit=False).escribe_una_palabra != None:
-                    formulario.save(commit=False).algo = formulario.save(commit=False).escribe_una_palabra + " "
-                    formulario.save(commit=False).escribe_una_palabra = ""
-                elif formulario.save(commit=False).escribe_una_palabra is None:
+                if formulario.save(commit=False).algo is None and formulario.save(commit=False).Write_a_word != None:
+                    formulario.save(commit=False).algo = formulario.save(commit=False).Write_a_word + " "
+                    formulario.save(commit=False).Write_a_word = ""
+                elif formulario.save(commit=False).Write_a_word is None:
                     pass
                 else:
-                    formulario.save(commit=False).algo += str(formulario.save(commit=False).escribe_una_palabra) + " "
-                    formulario.save(commit=False).escribe_una_palabra = ""
+                    formulario.save(commit=False).algo += str(formulario.save(commit=False).Write_a_word) + " "
+                    formulario.save(commit=False).Write_a_word = ""
                 #formulario.dias_buenos
                 formulario.save()
                 return redirect("/user/")

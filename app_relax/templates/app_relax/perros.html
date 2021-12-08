@@ -1,13 +1,14 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relax</title>
 
+    <link rel="shortcut icon" href="{% static '/images/icono-relax.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/css/perros-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,11 +27,15 @@
     <form action="" method="POST">
         <br>
         <img id="imagen-perro" src="{{ message }}" alt="perro" width="400px" height="650px">
+        <br>
         <input type="hidden" name="imagen" value="{{ message }}">
         <br>
         {% csrf_token %}
         {{ form }}
         <button type="submit">Save Dog</button>
+        <a class="removelinkdefault" href="/dogs/">Refresh</a>
     </form>
+    <br>
+    <p>If you do not have an account when trying to upload your dog, it will simply be deleted.</p>
 </body>
 </html>

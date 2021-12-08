@@ -5,11 +5,41 @@ body, html{
     background-color: #ffffff;
 }
 
+section{
+    transform: translateY(50%);
+}
+
 div{
-    display: flex;
     align-items: center;
     width: 40%;
     margin: 0 auto;
-    background-color: aquamarine;
+    background-image: linear-gradient(aquamarine, #87cefa, #E6E6FA);
+    border-radius: 20px;
+    padding-top: 1px;
+    padding-bottom: 20px;
+}
+
+h2{
+    margin: 20px;
+    /* margin-top: 100px; */
+}
+
+.disclaimer{
+    text-align: center;
+}
+
+p label{
+    margin-left: 15px;
+}
+
+button{
+    margin-left: 15px;
+}
+
+input{
+    border-radius: 5px;
+}
+
+select{
     border-radius: 5px;
 }

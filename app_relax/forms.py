@@ -13,7 +13,7 @@ from tinymce.widgets import TinyMCE
 class DogsForm(forms.ModelForm):
     class Meta:
         model = Dog
-        fields = ['nombre']
+        fields = ['Name']
 
 class Contactos(forms.ModelForm):
     class Meta:
@@ -49,13 +49,13 @@ class NoteForm(forms.ModelForm):
 class SentimientoForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ["situacion", "detonante", "sentimiento", "intensidad"]
+        fields = ["situation", "trigger", "sentiment", "intensity"]
 
 class HowDoYouFeelForm(forms.ModelForm):
     class Meta:
         model = Profile
         #fields = ["Como_estuvo_tu_dia"]
-        fields = ["Como_estuvo_tu_dia", 'escribe_una_palabra']
+        fields = ["How_was_your_day", 'Write_a_word']
 
 # class ProfileForm(forms.ModelForm):
 #     class Meta:
