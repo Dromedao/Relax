@@ -45,7 +45,11 @@ class NoteForm(forms.ModelForm):
         # widgets = {
         #     'content': forms.TextInput(attrs={'class': 'myfieldclass'}),
         # }
-
+class NoteFormMovil(forms.ModelForm):
+    class Meta:
+        model = Nota
+        fields = ['content_movil']
+    
 class SentimientoForm(forms.ModelForm):
     class Meta:
         model = Profile

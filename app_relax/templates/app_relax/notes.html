@@ -22,14 +22,20 @@
             <div class="cabecera">
                 <!-- <h2>@{{ nota.user }}</h2> -->
                 <br>
-                <p id="algo">{{ nota.timestamp}}</p>
+                <p id="algo">{{ nota.timestamp }}</p>
             </div>
             <div class="texto">
+                {% ifequal nota.content_movil "" %}
                 {{ nota.content|safe }}
+                {% else %}
+                {{ nota.content_movil|safe }}
+                {% endifequal %}
+
             </div>
             <br>
         </article>
         {% endifequal %}
+        
         {% endfor %}
     </div>
     <footer>

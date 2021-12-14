@@ -6,7 +6,7 @@ from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import UpdateView
 from django.contrib import messages
-from .forms import Contactos, DogsForm, HowDoYouFeelForm, UserRegisterForm, NoteForm, SentimientoForm
+from .forms import Contactos, DogsForm, HowDoYouFeelForm, NoteFormMovil, UserRegisterForm, NoteForm, SentimientoForm
 from django.contrib.auth import login, authenticate
 import datetime
 import requests
@@ -14,7 +14,6 @@ from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 #from django.conf import settings
 from django.conf import settings as conf_settings
-
 
 def home(request):
     return render(request, 'app_relax/index.html')
@@ -121,6 +120,8 @@ def register(request):
             messages.success(request, f'Usuario {username} creado')
 
             return redirect("/home/")
+        else:
+            form = UserRegisterForm()
     else:
         form = UserRegisterForm()
     context = {'form' : form }
@@ -134,20 +135,39 @@ def paint(request):
 
 
 def nota(request):
-    print(request.user.is_authenticated)
+    #print(request.user.is_authenticated)
     if request.user.is_authenticated:
         current_user = get_object_or_404(User, pk=request.user.pk)
         if request.method == "POST":
             form = NoteForm(request.POST)
+            forma = NoteFormMovil(request.POST)
             if form.is_valid():
                 nota = form.save(commit=False)
+                
+                print(nota.content, "NOTA PRINT")
+
                 nota.user = current_user
+                nota.timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+                print(request.POST.get("texto-movil"))
                 nota.save()
                 messages.success(request, 'Nota subida')
                 return redirect("/notes/")
+            elif forma.is_valid():
+                nota = forma.save(commit=False)
+                nota.timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+                print(nota.content, "NOTA PRINT")
+
+                nota.user = current_user
+                print(request.POST.get("texto-movil"))
+                nota.save()
+                return redirect("/notes/")
         else:
             form = NoteForm()
-    return render(request, 'app_relax/newnote.html', {'form' : form })
+            forma = NoteFormMovil()
+    else:
+        form = NoteForm()
+        forma = NoteFormMovil()
+    return render(request, 'app_relax/newnote.html', {'form' : form, "forma" : forma })
 
 # def perros(request):
 #     response = request.GET.get('https://dog.ceo/api/breeds/image/random').json()
@@ -175,11 +195,14 @@ def hello_user(request):
                 dog = form.save(commit=False)
                 dog.user = current_user
                 dog.imagen = request.POST.get("imagen")
+                dog.fecha = datetime.datetime.now().strftime("%Y-%m-%d") 
                 dog.save()
                 messages.success(request, 'Perro guardado')
                 return redirect('/dogs/')
         else:
             form = DogsForm()
+    else:
+        form = DogsForm()
     imagen_perro = get_dog()
     listado = {
         "form" : form,
@@ -334,6 +357,8 @@ def FormularioView(request):
             form.save(commit=False).user = current_user
             form.save()
             return redirect('/home/')
+        else:
+            form = SentimientoForm()
     else:
         form = SentimientoForm()
     return render(request, "app_relax/formulario.html", data)

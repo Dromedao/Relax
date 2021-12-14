@@ -15,7 +15,7 @@ body, html{
 #ul-buttons{
     text-align: center;
     list-style: none;
-    font-size: 25px;
+    font-size: 200%;
 }
 
 .a-ul{
@@ -40,6 +40,71 @@ div{
     width: 29%;
     margin: 30px auto;
 }
+
+@media (max-width: 450px){
+    div li img{
+        width: 60%;
+    }
+    .a-ul{
+        text-decoration: none;
+        /* padding: 5px; */
+        color: darkslateblue;
+        /* margin: 10px;
+        border: 10px; */
+        margin-left: 20%;
+    }
+    
+    #ul-buttons{
+        text-align: center;
+        list-style: none;
+        font-size: 130%;
+    }
+
+    #ul-buttons{
+        width: 100%;
+        margin: 0 auto;
+        transform: translateX(-70px);
+    }
+
+    div{
+        width: 29%;
+        margin: 20px auto;
+    }
+
+}
+
+@media (max-width: 800px){
+    div li img{
+        width: 40%;
+    }
+    
+    #ul-buttons{
+        text-align: center;
+        list-style: none;
+        font-size: 150%;
+    }
+    
+    /* div li img{
+        width: 70%;
+    }
+    .a-ul{
+        text-decoration: none;
+        color: darkslateblue;
+        margin-left: 20%;
+    }
+    
+    #ul-buttons{
+        text-align: center;
+        list-style: none;
+        font-size: 130%;
+    }
+
+    #ul-buttons{
+        width: 100%;
+        margin: 0 auto;
+        transform: translateX(-70px);
+    } */
+} 
 
 /*
 .a-ul:hover{
@@ -78,4 +143,4 @@ div{
     width: 50%;
     background-color: #4967ff;
     border-radius: 10px;
-} */
+}

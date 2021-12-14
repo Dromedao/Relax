@@ -139,7 +139,8 @@ class Nota(models.Model):
     timestamp = models.DateTimeField(default=datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
     # content = models.CharField(default="", max_length=1000)
     #content = models.TextField()
-    content = tinymce_models.HTMLField()
+    content = tinymce_models.HTMLField(default="")
+    content_movil = models.TextField(blank=False, null=False, default="")
 
     class Meta:
         ordering = ['-timestamp']
