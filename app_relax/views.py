@@ -80,17 +80,20 @@ def send_email(request):
     email.send()
 
 def definirContactor(request):
-    producto = get_object_or_404(Profile, user = request.user)
-    #contactos_existentes = Contactos(request.POST, instance=producto, files=request.FILES).contactos
-    if request.method == 'POST':
-        form = Contactos(request.POST, instance=producto, files=request.FILES)
-        if form.is_valid():
-            #form.save(commit=False).user = current_user
-            if form.save(commit=False).contactos != None:
-                form.save(commit=False).contactos = form.save(commit=False).contactos + request.POST.get("contacto") + "&"
-            else:
-                form.save(commit=False).contactos = request.POST.get("contacto") + "&"
-            form.save()
+    if request.user.is_authenticated:
+        producto = get_object_or_404(Profile, user = request.user)
+        #contactos_existentes = Contactos(request.POST, instance=producto, files=request.FILES).contactos
+        if request.method == 'POST':
+            form = Contactos(request.POST, instance=producto, files=request.FILES)
+            if form.is_valid():
+                #form.save(commit=False).user = current_user
+                if form.save(commit=False).contactos != None:
+                    form.save(commit=False).contactos = form.save(commit=False).contactos + request.POST.get("contacto") + "&"
+                else:
+                    form.save(commit=False).contactos = request.POST.get("contacto") + "&"
+                form.save()
+    else:
+        return redirect("/login/")
     form = Contactos()
 
     for elemento in Profile.objects.all():
@@ -106,7 +109,10 @@ def definirContactor(request):
 
 def enviarCorreos(request):
     if request.method == 'POST':
-        send_email(request)
+        if request.user.is_authenticated:
+            send_email(request)
+        else:
+            return redirect("/login/")
     return render(request, 'app_relax/enviar-correo.html')
 
 def register(request):
